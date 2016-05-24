@@ -1,4 +1,5 @@
-//var Message = require('./../js/message.js').Message;
+var weatherInterface = require('./../js/weather-interface.js');
+
 $(document).ready(function(){
 
 });
