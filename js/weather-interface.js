@@ -1,4 +1,4 @@
-var apiKey = "20f42e4921da42b173b8342f97d4e8dd";
+var apiKey = require('./../.env').apiKey;
 
 var convertToCelcius = function(kelvin) {
   return kelvin - 273.15;
