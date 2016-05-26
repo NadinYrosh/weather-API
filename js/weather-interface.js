@@ -1,18 +1,16 @@
-var apiKey = require('./../.env').apiKey;
+var gMapsKey = require('./../.env').gMapsKey;
+var Weather = require('./../js/weather.js').Weather;
 
-var convertToCelcius = function(kelvin) {
-  return kelvin - 273.15;
+var displayHumidity = function(city, humidityData) {
+  $('.showWeather').text("The humidity in " + city + " is " + humidityData + "%");
 }
 
 $(document).ready(function() {
+  var currentWeatherObject = new Weather();
   $('#weatherLocation').click(function() {
     var city = $('#location').val();
     $('#location').val("");
-    $('.showWeather').text("The city you have chosen is " + city + ".");
-    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response)  {
-      $(".showWeather").text("The humidity in " + city + " is " + response.main.humidity +
-    "%");
-      $(".showWeather2").text("The temperature (in Celcius) in " + city + " is " + convertToCelcius(response.main.temp) + " degrees");
-    });
+    // $('.showWeather').text("The city you have chosen is " + city + ".");
+    currentWeatherObject.getWeather(city, displayHumidity);
   });
 });

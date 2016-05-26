@@ -71,7 +71,7 @@ gulp.task('bower', ['bowerJS', 'bowerCSS']);
 
 //browserify --------------------------------
 gulp.task('jsBrowserify', ["concatBrowser"], function() {
-  return browserify({ entries: ['./js/browser.js'] })
+  return browserify({ entries: ['./js/weather-interface.js'] })
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest('./build/js'));
